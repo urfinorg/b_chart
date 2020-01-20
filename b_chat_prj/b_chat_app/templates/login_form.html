@@ -1,0 +1,67 @@
+{# Инициализация, какую форму показывать #}
+<script type="application/javascript">
+    {% if user.is_authenticated %}
+        var username = "{{ user.username }}";
+        var is_auth_user = 1;
+    {% else %}
+        var username = 'none';
+        var is_auth_user = 0;
+    {% endif %}
+</script>
+
+<div id="is_auth_block" class="sync_form">
+    <p>you login in as: <b id="label_user_name">label_user_name</b> </p>
+    <a id="logout_link" href="#">logout</a>
+</div>
+
+<!-- action="{% url 'api' %}" -->
+<form id="login_form" class="sync_form" >
+    {% csrf_token %}
+    <h3>login</h3>
+    {{ login_form.as_p }}
+    <input type="submit" value="login" />
+    <div>
+        If you not registered yet, you can
+        <b><a id="show_reg_form" href="#">registration</a></b> now.
+    </div>
+</form>
+
+
+<form id="reg_form" class="sync_form" >
+    {% csrf_token %}
+    <h3>registration</h3>
+    {{ reg_form.as_p }}
+    <input type="submit" value="registration" />
+
+    <div id="reg_form_validation"></div>
+
+    <div>
+        If you already registered, you can
+        <b><a id="show_login_form" href="#">Login in</a></b>
+    </div>
+
+</form>
+
+
+
+
+
+
+
+{#  <div id="debug_message">debug_message</div> #}
+{% if book_list %}
+
+{% else %}
+
+{% endif %}
+
+    <!--
+    <table>
+
+        <tr><td><b>login:</b></td></tr>
+        <tr><td><input type="text" name="login" value="hhhh1"  /></td></tr>
+
+        <tr><td><b>password:</b></td></tr>
+        <tr><td><input type="text" name="password" /></td></tr>
+    </table>
+    -->

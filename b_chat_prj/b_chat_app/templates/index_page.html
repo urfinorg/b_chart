@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block title %} b_chat {% endblock %}
+
+{% block content %}
+
+<h2>b_chat application</h2>
+
+    <p> <textarea id="message_area" ></textarea></p>
+
+    <form id="message_form">
+        {% csrf_token %}
+        <input type="text" id="sending_message" name="sending_message" />
+        <input type="submit" value="Send" />
+    </form>
+
+{% endblock %}
